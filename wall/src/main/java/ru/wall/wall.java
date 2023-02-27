@@ -7,16 +7,24 @@ public class wall {
         int letters = 15;
         int whitespace = 3;
         int suggestionLength = ((letters / 3) * 62) + (whitespace * 12);
-        System.out.println(suggestionLength);
-        System.out.println("Введите длинну забора в сантеметрах: ");
-        Scanner sc = new Scanner(System.in);
-        int lengthUser = sc.nextInt();
-        if(lengthUser > suggestionLength){
-            System.out.println("Ваше предложение слишном длинное и НЕ поместиться на заборе");
-            }
-            else{
-            System.out.println("Ваше предложение поместиться на заборе");
-        }
 
-        }
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            System.out.println("Введите длинну забора в сантиметрах: ");
+            String lengthUser = sc.nextLine();
+            int enterInt = Integer.parseInt(lengthUser);
+            if (enterInt <= suggestionLength) {
+                System.out.println("Ваше предложение поместиться на заборе");
+            } else {
+                System.out.println("Ваше предложение слишном длинное и НЕ поместиться на заборе");
+            }
+            //throw new RuntimeException();
+        } catch (NumberFormatException e) {
+            System.out.println("Вы ввели не число или пробел, попробуйте снова ввести целое число ");
+        } //catch (Exception e) {
+        //System.out.println("Undefined error");
+        //}
+
     }
+}
