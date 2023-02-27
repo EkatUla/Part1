@@ -7,8 +7,12 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("Hello!");
-        IrrigationService irrigationService = IrrigationServiceImpl.getDefault();
-        irrigationService.process();
+        try {
+            IrrigationService irrigationService = IrrigationServiceImpl.getDefault();
+            irrigationService.process();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         System.out.println("GoodBay!");
     }
 }

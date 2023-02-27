@@ -1,5 +1,6 @@
 package ru.test.irrigation.service.impl;
 
+import ru.test.irrigation.exception.BusinessException;
 import ru.test.irrigation.service.InputService;
 
 import java.time.LocalDate;
@@ -13,14 +14,12 @@ public class InputServiceImpl implements InputService {
 
     @Override
     public LocalDate askPrevDate() {
-        System.out.println("Enter prev date: ");
-        String prevDateString = sc.nextLine();
-
         try {
+            System.out.println("Введите предыдущую дату полива в формате dd-MM-yyyy: ");
+            String prevDateString = sc.nextLine();
             return LocalDate.parse(prevDateString, formatter);
         } catch (Exception e) {
-            System.out.println("Error");
+            throw new BusinessException("Не корректный ввод, попробуйте снова, введя дату в формате dd-MM-yyyy");
         }
-        return null;
     }
 }
